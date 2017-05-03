@@ -1,15 +1,16 @@
 package edu.dao.tester;
 
 import edu.models.tester.Blank;
+import edu.models.tester.Essay;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 /**
- * Created by Mike on 02.05.2017.
+ * Created by Mike on 03.05.2017.
  */
-public class BlankDAO {
+public class EssayDAO {
 
     private SessionFactory sessionFactory;
 
@@ -17,33 +18,34 @@ public class BlankDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public void createBlank(Blank blank){
+    public void createEssay(Essay essay){
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(blank);
+        session.persist(essay);
     }
 
-    public void updateBlank(Blank blank){
+    public void updateEssay(Essay essay){
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(blank);
+        session.update(essay);
     }
 
-    public void deleteBlank(String id){
+    public void deleteEssay(String id){
         Session session = this.sessionFactory.getCurrentSession();
-        Blank blank = (Blank) session.load(Blank.class, id);
+        Essay essay = (Essay) session.load(Essay.class, id);
 
-        if (blank!=null){
-            session.delete(blank);
+        if (essay!=null){
+            session.delete(essay);
         }
     }
 
-    public Blank getBlankById(String id){
+    public Essay getEssayById(String id){
         Session session = this.sessionFactory.getCurrentSession();
-        return (Blank) session.load(Blank.class, id);
+        return (Essay) session.load(Essay.class, id);
     }
 
     @SuppressWarnings("unchecked")
-    public List<Blank> getAllBlanks() {
+    public List<Essay> getAllBlanks() {
         Session session = this.sessionFactory.getCurrentSession();
-        return (List<Blank>) session.createQuery("FROM Blank").list();
+        return (List<Essay>) session.createQuery("FROM Essay").list();
     }
+
 }
