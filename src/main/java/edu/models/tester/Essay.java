@@ -22,5 +22,34 @@ public class Essay {
     @JoinColumn(name = "question_id")
     private Question question;
 
+    public Essay() {}
 
+    public Essay(String essay, Question question) {
+        this.essay = essay;
+        this.question = question;
+    }
+
+    public UUID getEssayID() {
+        return essayID;
+    }
+
+    public void setEssayID(UUID essayID) {
+        this.essayID = essayID;
+    }
+
+    public String getEssay() {
+        return essay;
+    }
+
+    public void setEssay(String essay) {
+        this.essay = essay;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 }
