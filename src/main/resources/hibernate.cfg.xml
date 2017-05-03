@@ -11,7 +11,7 @@
         <property name="hibernate.connection.password">Mit0mFS5</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="swow_sql">true</property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <mapping class="edu.models.users.User" />
         <mapping class="edu.models.users.UAnswer" />
@@ -19,6 +19,7 @@
         <mapping class="edu.models.tester.Question" />
         <mapping class="edu.models.tester.Option" />
         <mapping class="edu.models.tester.Blank" />
+        <mapping class="edu.models.tester.Essay" />
 
     </session-factory>
 </hibernate-configuration>

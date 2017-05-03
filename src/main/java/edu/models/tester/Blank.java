@@ -18,14 +18,18 @@ public class Blank {
     @Column(name = "answer")
     private String answer;
 
+    @Column(name = "user_answer")
+    private String uAnswer;
+
     @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name = "question_id")
     private Question question;
 
     public Blank() {}
 
-    public Blank(String answer, Question question) {
+    public Blank(String answer, String uAnswer, Question question) {
         this.answer = answer;
+        this.uAnswer = uAnswer;
         this.question = question;
     }
 
@@ -43,6 +47,14 @@ public class Blank {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getuAnswer() {
+        return uAnswer;
+    }
+
+    public void setuAnswer(String uAnswer) {
+        this.uAnswer = uAnswer;
     }
 
     public Question getQuestion() {

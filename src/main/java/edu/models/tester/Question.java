@@ -1,6 +1,8 @@
 package edu.models.tester;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +19,7 @@ public class Question {
     @Column(name = "question_id")
     private UUID questionID;
 
+    @Pattern(regexp = "[A-Z1-9]+.{1,255}")
     @Column(name = "question_text")
     private String text;
 
@@ -31,6 +34,9 @@ public class Question {
 
     @OneToMany(mappedBy = "question")
     private List<Option> options = new ArrayList<>();
+
+    @OneToMany(mappedBy = "question")
+    private List<Essay> essayList = new ArrayList<>();
 
     @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name = "quiz_id")

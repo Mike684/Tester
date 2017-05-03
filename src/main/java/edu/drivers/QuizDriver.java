@@ -1,9 +1,7 @@
 package edu.drivers;
 
-import edu.creator.QuizMaker;
 import edu.dao.tester.QuizDAO;
 import edu.models.tester.Quiz;
-import edu.services.FileService;
 import edu.util.HibernateUtil;
 import org.hibernate.SessionFactory;
 
@@ -20,14 +18,8 @@ public class QuizDriver {
         quiz.setTheme("SomeTheme");
         SessionFactory sessionFactory = HibernateUtil.getSessionfactory();
 
-            QuizDAO quizDAO = new QuizDAO();
-            quizDAO.setSessionFactory(sessionFactory);
-            quizDAO.createQuiz(quiz);
-
-
-
-
-
-//        new FileService().writeToJSON(quizMaker);
+        QuizDAO quizDAO = new QuizDAO();
+        quizDAO.setSessionFactory(sessionFactory);
+        quizDAO.createQuiz(quiz);
     }
 }

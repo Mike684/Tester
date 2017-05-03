@@ -1,6 +1,7 @@
 package edu.models.tester;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class Quiz {
     @Column(name = "quiz_id")
     private UUID quizID;
 
+    @Pattern(regexp = "[A-Z1-9]+.{1,64}")
     @Column(name = "theme")
     private String theme;
 
