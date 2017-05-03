@@ -1,53 +1,57 @@
 package edu.models.users;
 
-import edu.models.tester.Question;
-
-import javax.persistence.*;
 import java.util.UUID;
 
 /**
  * Created by Mike on 02.05.2017.
  */
 
-@Entity
-@Table(name = "users_answers")
 public class UAnswer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "answer_id")
     private UUID answerID;
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User user;
+    private UUID userID;
 
-    @ManyToOne
-    @JoinColumn(name = "question_id")
-    private Question question;
+    private UUID questionID;
 
-    @Column(name = "answer")
     private String answer;
 
-    @Column(name = "mark")
     private String mark;
 
-    public UAnswer() { super();}
-
-    public User getUser() {
-        return user;
+    public UAnswer() {
+        answerID = UUID.randomUUID();
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public UAnswer(UUID userID, UUID questionID, String answer, String mark) {
+        answerID = UUID.randomUUID();
+        this.userID = userID;
+        this.questionID = questionID;
+        this.answer = answer;
+        this.mark = mark;
     }
 
-    public Question getQuestion() {
-        return question;
+    public UUID getAnswerID() {
+        return answerID;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setAnswerID(UUID answerID) {
+        this.answerID = answerID;
+    }
+
+    public UUID getUserID() {
+        return userID;
+    }
+
+    public void setUserID(UUID userID) {
+        this.userID = userID;
+    }
+
+    public UUID getQuestionID() {
+        return questionID;
+    }
+
+    public void setQuestionID(UUID questionID) {
+        this.questionID = questionID;
     }
 
     public String getAnswer() {
@@ -64,13 +68,5 @@ public class UAnswer {
 
     public void setMark(String mark) {
         this.mark = mark;
-    }
-
-    public UUID getAnswerID() {
-        return answerID;
-    }
-
-    public void setAnswerID(UUID answerID) {
-        this.answerID = answerID;
     }
 }

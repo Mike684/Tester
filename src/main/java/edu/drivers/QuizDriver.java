@@ -1,9 +1,10 @@
 package edu.drivers;
 
-import edu.dao.tester.QuizDAO;
+import edu.creator.QuizMaker;
+import edu.dao.users.UserDAO;
 import edu.models.tester.Quiz;
-import edu.util.HibernateUtil;
-import org.hibernate.SessionFactory;
+import edu.models.users.User;
+import edu.services.FileService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,12 +15,17 @@ import java.sql.SQLException;
 public class QuizDriver {
     public static void main(String[] args) throws IOException, SQLException {
 
-        Quiz quiz = new Quiz();
-        quiz.setTheme("SomeTheme");
-        SessionFactory sessionFactory = HibernateUtil.getSessionfactory();
+        Quiz quiz = new QuizMaker().createQuiz();
+//        new FileService().writeToJSON(quiz);
+//        new FileService().writeToXML(quiz);
 
-        QuizDAO quizDAO = new QuizDAO();
-        quizDAO.setSessionFactory(sessionFactory);
-        quizDAO.createQuiz(quiz);
+        UserDAO userDAO = new UserDAO();
+        User user = new User();
+        user.setUserName("name");
+        user.setPassword("password");
+        userDAO.createUser(user);
+//        userDAO.updateUser(user);
+//        userDAO.deleteUser(user.getUserID());
+//        System.out.println(userDAO.getUserById(user.getUserID()).toString());
     }
 }

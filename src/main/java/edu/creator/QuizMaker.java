@@ -1,10 +1,7 @@
 package edu.creator;
 
 
-import edu.models.tester.Blank;
-import edu.models.tester.Option;
-import edu.models.tester.Question;
-import edu.models.tester.Quiz;
+import edu.models.tester.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,31 +13,20 @@ public class QuizMaker {
 
     private Quiz quiz;
 
-//    public QuizMaker(){
-//        quizList = new ArrayList<>();
-//    }
-//
-//    public List<Quiz> getQuizList() {
-//        return quizList;
-//    }
-//
-//    public void addQuiz(Quiz quiz) {
-//        quizList.add(quiz);
-//    }
-
-    public Quiz createQuestions() {
+    public Quiz createQuiz() {
 
         quiz = new Quiz();
         quiz.setTheme("SomeTheme");
 
         //Question 1
-//        Question question1 = new Question(quiz);
-//        question1.setText("Multiple choice: What is the first month of the year?");
-//        question1.setType("Test");
-//        question1.addOption(new Option("January", true, question1));
-//        question1.addOption(new Option("February", false, question1));
-//        question1.addOption(new Option("March", false, question1));
-//        quiz.addQuestion(question1);
+        Question question1 = new Question();
+        question1.setText("Multiple choice: What is the first month of the year?");
+        question1.setType(QuestionType.TEST);
+        question1.setQuizID(quiz.getQuizID());
+        question1.addOption(new Option("January", true, null, question1.getQuestionID()));
+        question1.addOption(new Option("February", false, null, question1.getQuestionID()));
+        question1.addOption(new Option("March", false, null, question1.getQuestionID()));
+        quiz.addQuestion(question1);
 
 //        //Question 2
 //        Question question2 = new Question(quiz);

@@ -1,36 +1,29 @@
 package edu.models.tester;
 
-import javax.persistence.*;
 import java.util.UUID;
 
 /**
  * Created by Mike on 02.05.2017.
  */
-@Entity
-@Table(name = "blank_answers")
 public class Blank {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "blank_id")
     private UUID blankID;
 
-    @Column(name = "answer")
     private String answer;
 
-    @Column(name = "user_answer")
     private String uAnswer;
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "question_id")
-    private Question question;
+    private UUID questionID;
 
-    public Blank() {}
+    public Blank() {
+        blankID = UUID.randomUUID();
+    }
 
-    public Blank(String answer, String uAnswer, Question question) {
+    public Blank(String answer, String uAnswer, UUID questionID) {
+        blankID = UUID.randomUUID();
         this.answer = answer;
         this.uAnswer = uAnswer;
-        this.question = question;
+        this.questionID = questionID;
     }
 
     public UUID getBlankID() {
@@ -49,19 +42,19 @@ public class Blank {
         this.answer = answer;
     }
 
-    public String getuAnswer() {
+    public String getUAnswer() {
         return uAnswer;
     }
 
-    public void setuAnswer(String uAnswer) {
+    public void setUAnswer(String uAnswer) {
         this.uAnswer = uAnswer;
     }
 
-    public Question getQuestion() {
-        return question;
+    public UUID getQuestionID() {
+        return questionID;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setQuestionID(UUID questionID) {
+        this.questionID = questionID;
     }
 }

@@ -25,7 +25,7 @@ public class FileService {
         return quiz;
     }
 
-    public void writeToJSON(QuizMaker quiz) throws IOException {
+    public void writeToJSON(Quiz quiz) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(quiz);
         FileWriter writer = null;
@@ -53,7 +53,7 @@ public class FileService {
         return quiz;
     }
 
-    public void writeToXML(QuizMaker quiz){
+    public void writeToXML(Quiz quiz){
         try {
             File file = new File("down/test.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(QuizMaker.class);

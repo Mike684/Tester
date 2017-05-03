@@ -1,7 +1,5 @@
 package edu.models.tester;
 
-import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -9,23 +7,17 @@ import java.util.UUID;
 /**
  * Created by Mike on 02.05.2017.
  */
-@Entity
-@Table(name = "quiz")
 public class Quiz {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "quiz_id")
     private UUID quizID;
 
-    @Pattern(regexp = "[A-Z1-9]+.{1,64}")
-    @Column(name = "theme")
     private String theme;
 
-    @OneToMany(mappedBy = "quiz")
     private List<Question> questions = new ArrayList<>();
 
-    public Quiz() {}
+    public Quiz() {
+        quizID = UUID.randomUUID();
+    }
 
     public UUID getQuizID() {
         return quizID;

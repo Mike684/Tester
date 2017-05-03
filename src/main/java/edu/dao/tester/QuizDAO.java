@@ -1,60 +1,116 @@
 package edu.dao.tester;
 
+import edu.connector.DBConnector;
 import edu.models.tester.Quiz;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import edu.models.users.User;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Mike on 02.05.2017.
  */
 public class QuizDAO {
 
-    private SessionFactory sessionFactory;
+    private Connection connection;
+    private PreparedStatement pStatement;
+    private ResultSet resultSet;
+    private String sql;
 
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public void createQuiz(Quiz quiz) throws SQLException {
+        DBConnector connector = new DBConnector();
+        connection = connector.getConnection();
+        sql = "INSERT INTO quiz (quiz_id, theme) VALUES (?,?)";
+
+        pStatement = connection.prepareStatement(sql);
+        pStatement.setObject(1, quiz.getQuizID());
+        pStatement.setString(2, quiz.getTheme());
+        pStatement.executeUpdate();
+
+        pStatement.close();
+        connection.close();
+        connector.disconnect();
     }
 
-    public void createQuiz(Quiz quiz){
-        Session session = this.sessionFactory.openSession();
-        try {
-            session.beginTransaction();
-            session.persist(quiz);
-            session.getTransaction().commit();
-        } catch(Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-            sessionFactory.close();
+    public void updateUser(Quiz quiz) throws SQLException {
+        DBConnector connector = new DBConnector();
+        connection = connector.getConnection();
+        sql = "UPDATE quiz SET theme = ?";
+
+        pStatement = connection.prepareStatement(sql);
+        pStatement.setString(1, quiz.getTheme());
+        pStatement.executeUpdate();
+
+        pStatement.close();
+        connection.close();
+        connector.disconnect();
+    }
+
+    public void deleteUser(UUID id) throws SQLException {
+        DBConnector connector = new DBConnector();
+        connection = connector.getConnection();
+        sql = "DELETE FROM quiz WHERE quiz_id = ?";
+
+        pStatement = connection.prepareStatement(sql);
+        pStatement.setObject(1, id);
+        pStatement.executeUpdate();
+
+        pStatement.close();
+        connection.close();
+        connector.disconnect();
+    }
+
+    public Quiz getUserById(UUID id) throws SQLException {
+
+        DBConnector connector = new DBConnector();
+        connection = connector.getConnection();
+        sql = "SELECT * FROM quiz WHERE quiz_id = ?";
+
+        pStatement = connection.prepareStatement(sql);
+        pStatement.setObject(1, id);
+        resultSet = pStatement.executeQuery();
+
+        Quiz quiz = new Quiz();
+        while (resultSet.next()){
+            quiz.setQuizID(UUID.fromString(resultSet.getString("quiz_id")));
+            quiz.setTheme(resultSet.getString("theme"));
         }
+
+        resultSet.close();
+        pStatement.close();
+        connection.close();
+        connector.disconnect();
+
+        return quiz;
     }
 
-    public void updateQuiz(Quiz quiz){
-        Session session = this.sessionFactory.getCurrentSession();
-        session.update(quiz);
-    }
+    public List<Quiz> getAllQuizzes() throws SQLException {
+        DBConnector connector = new DBConnector();
+        connection = connector.getConnection();
+        sql = "SELECT * FROM quiz";
 
-    public void deleteQuiz(String id){
-        Session session = this.sessionFactory.getCurrentSession();
-        Quiz quiz = (Quiz) session.load(Quiz.class, id);
+        pStatement = connection.prepareStatement(sql);
+        resultSet = pStatement.executeQuery();
 
-        if (quiz!=null){
-            session.delete(quiz);
+        List<Quiz> quizList = new ArrayList<>();
+        while (resultSet.next()){
+            Quiz quiz = new Quiz();
+            quiz.setQuizID(UUID.fromString(resultSet.getString("quiz_id")));
+            quiz.setTheme(resultSet.getString("theme"));
+            quizList.add(quiz);
         }
-    }
 
-    public Quiz getQuizById(String id){
-        Session session = this.sessionFactory.getCurrentSession();
-        return (Quiz) session.load(Quiz.class, id);
-    }
+        resultSet.close();
+        pStatement.close();
+        connection.close();
+        connector.disconnect();
 
-    @SuppressWarnings("unchecked")
-    public List<Quiz> getAllQuizzes() {
-        Session session = this.sessionFactory.getCurrentSession();
-        return (List<Quiz>) session.createQuery("FROM Quiz ").list();
+        return quizList;
     }
 
 }

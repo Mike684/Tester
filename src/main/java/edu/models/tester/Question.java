@@ -1,8 +1,5 @@
 package edu.models.tester;
 
-
-import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -10,42 +7,37 @@ import java.util.UUID;
 /**
  * Created by Mike on 02.05.2017.
  */
-@Entity
-@Table(name = "questions")
 public class Question {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "question_id")
     private UUID questionID;
 
-    @Pattern(regexp = "[A-Z1-9]+.{1,255}")
-    @Column(name = "question_text")
     private String text;
 
-    @Column(name = "question_type")
-    private String type;
+    private QuestionType type;
 
-    @Column(name = "max_mark")
     private Double maxMark;
 
-    @OneToMany(mappedBy = "question")
     private List<Blank> blanks = new ArrayList<>();
 
-    @OneToMany(mappedBy = "question")
     private List<Option> options = new ArrayList<>();
 
-    @OneToMany(mappedBy = "question")
     private List<Essay> essayList = new ArrayList<>();
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "quiz_id")
-    private Quiz quiz;
+    private UUID quizID;
 
-    public Question() {}
+    public Question() {
+        questionID = UUID.randomUUID();
+    }
 
-    public Question(Quiz quiz) {
-        this.quiz = quiz;
+    public Question(UUID questionID, String text, QuestionType type, Double maxMark, List<Blank> blanks, List<Option> options, List<Essay> essayList, UUID quizID) {
+        questionID = UUID.randomUUID();
+        this.text = text;
+        this.type = type;
+        this.maxMark = maxMark;
+        this.blanks = blanks;
+        this.options = options;
+        this.essayList = essayList;
+        this.quizID = quizID;
     }
 
     public UUID getQuestionID() {
@@ -64,11 +56,11 @@ public class Question {
         this.text = text;
     }
 
-    public String getType() {
+    public QuestionType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(QuestionType type) {
         this.type = type;
     }
 
@@ -104,11 +96,11 @@ public class Question {
         options.add(option);
     }
 
-    public Quiz getQuiz() {
-        return quiz;
+    public UUID getQuizID() {
+        return quizID;
     }
 
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
+    public void setQuizID(UUID quizID) {
+        this.quizID = quizID;
     }
 }

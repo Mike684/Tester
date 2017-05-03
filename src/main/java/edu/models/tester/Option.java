@@ -1,40 +1,32 @@
 package edu.models.tester;
 
-import javax.persistence.*;
 import java.util.UUID;
 
 /**
  * Created by Mike on 02.05.2017.
  */
-@Entity
-@Table(name = "options")
 public class Option {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "option_id")
     private UUID optionID;
 
-    @Column(name = "option")
     private String option;
 
-    @Column(name = "answer")
     private Boolean answer;
 
-    @Column(name = "user_answer")
     private Boolean uAnswer;
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "question_id")
-    private Question question;
+    private UUID questionID;
 
-    public Option() {}
+    public Option() {
+        optionID = UUID.randomUUID();
+    }
 
-    public Option(String option, Boolean answer, Boolean uAnswer, Question question) {
+    public Option(String option, Boolean answer, Boolean uAnswer, UUID questionID) {
+        optionID = UUID.randomUUID();
         this.option = option;
         this.answer = answer;
         this.uAnswer = uAnswer;
-        this.question = question;
+        this.questionID = questionID;
     }
 
     public UUID getOptionID() {
@@ -61,19 +53,19 @@ public class Option {
         this.answer = answer;
     }
 
-    public Boolean getuAnswer() {
+    public Boolean getUAnswer() {
         return uAnswer;
     }
 
-    public void setuAnswer(Boolean uAnswer) {
+    public void setUAnswer(Boolean uAnswer) {
         this.uAnswer = uAnswer;
     }
 
-    public Question getQuestion() {
-        return question;
+    public UUID getQuestionID() {
+        return questionID;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setQuestionID(UUID questionID) {
+        this.questionID = questionID;
     }
 }
