@@ -2,7 +2,6 @@ package edu.dao.tester;
 
 import edu.connector.DBConnector;
 import edu.models.tester.Blank;
-import edu.models.users.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
