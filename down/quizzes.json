@@ -1,0 +1,288 @@
+{
+  "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4",
+  "theme": "SomeTheme",
+  "questions": [
+    {
+      "questionID": "6ad8ba9a-f235-4390-90a8-f66c8a4c359c",
+      "text": "Multiple choice: What is the first month of the year?",
+      "type": "TEST",
+      "blanks": [],
+      "options": [
+        {
+          "optionID": "a82efe00-c099-41d1-a6bd-216e0f0a4a93",
+          "option": "January",
+          "answer": true,
+          "questionID": "6ad8ba9a-f235-4390-90a8-f66c8a4c359c"
+        },
+        {
+          "optionID": "fb69b82f-fc35-456b-8e33-a8b4c2c1b20d",
+          "option": "February",
+          "answer": false,
+          "questionID": "6ad8ba9a-f235-4390-90a8-f66c8a4c359c"
+        },
+        {
+          "optionID": "ff4c52c6-5123-45e6-ab2c-d2e83404541e",
+          "option": "March",
+          "answer": false,
+          "questionID": "6ad8ba9a-f235-4390-90a8-f66c8a4c359c"
+        }
+      ],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "a19aca06-7c4a-4f0e-a9a9-85348e766b8b",
+      "text": "Multiple choice: What is an apple product?",
+      "type": "TEST",
+      "blanks": [],
+      "options": [
+        {
+          "optionID": "e3a2f09c-671f-4ccb-9170-d38989b9f7af",
+          "option": "ipod",
+          "answer": true,
+          "questionID": "a19aca06-7c4a-4f0e-a9a9-85348e766b8b"
+        },
+        {
+          "optionID": "5c6fa2b3-6c72-47b1-b3c4-5ccf4280dc24",
+          "option": "zune",
+          "answer": false,
+          "questionID": "a19aca06-7c4a-4f0e-a9a9-85348e766b8b"
+        },
+        {
+          "optionID": "4bd17529-c4f9-4e7f-805e-69be13739a36",
+          "option": "lenovo",
+          "answer": false,
+          "questionID": "a19aca06-7c4a-4f0e-a9a9-85348e766b8b"
+        }
+      ],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "806ca826-382c-4605-b301-d3dedd333172",
+      "text": "Multiple choice: What is Barack Obama known for?",
+      "type": "TEST",
+      "blanks": [],
+      "options": [
+        {
+          "optionID": "712968b1-e8c7-4a04-bd4b-d782c870db40",
+          "option": "Really likes the show Narcos",
+          "answer": false,
+          "questionID": "806ca826-382c-4605-b301-d3dedd333172"
+        },
+        {
+          "optionID": "33033b81-053a-4fc3-b72c-8ec3254a8a01",
+          "option": "He is the president, dude",
+          "answer": true,
+          "questionID": "806ca826-382c-4605-b301-d3dedd333172"
+        },
+        {
+          "optionID": "cb986246-6a74-443c-aa38-14679213958f",
+          "option": "Doesn’t actually like mac and cheese",
+          "answer": false,
+          "questionID": "806ca826-382c-4605-b301-d3dedd333172"
+        }
+      ],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650",
+      "text": "Multiple answer (more than one possible): What days are not work days?",
+      "type": "MTEST",
+      "blanks": [],
+      "options": [
+        {
+          "optionID": "f131b0a2-19fe-4241-8182-9f1710011808",
+          "option": "Monday",
+          "answer": false,
+          "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650"
+        },
+        {
+          "optionID": "a1ae9566-5de5-45a8-815c-bb8764c1684f",
+          "option": "Tuesday",
+          "answer": false,
+          "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650"
+        },
+        {
+          "optionID": "07b29f37-7703-42fc-a1cd-f22004df94b1",
+          "option": "Wednesday",
+          "answer": false,
+          "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650"
+        },
+        {
+          "optionID": "4eaabc00-55f0-4c3d-849c-c6f97772d083",
+          "option": "Thursday",
+          "answer": false,
+          "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650"
+        },
+        {
+          "optionID": "184363d3-0d84-45f5-9af0-b9b6934cae3b",
+          "option": "Friday",
+          "answer": false,
+          "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650"
+        },
+        {
+          "optionID": "965f14db-4177-433c-92a5-f5615b758bec",
+          "option": "Saturday",
+          "answer": true,
+          "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650"
+        },
+        {
+          "optionID": "a9fc1394-7cae-407d-bdbe-781224641e8c",
+          "option": "Sunday",
+          "answer": true,
+          "questionID": "068cb71e-4a73-4ee3-80eb-1d61d988e650"
+        }
+      ],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "609379f1-faed-496c-b1c0-69093bb000f1",
+      "text": "Multiple answer (more than one possible): What words begin with the letter \"a\"?",
+      "type": "MTEST",
+      "blanks": [],
+      "options": [
+        {
+          "optionID": "975df244-6213-4fdc-8e7c-d3dfd0a24ede",
+          "option": "apple",
+          "answer": true,
+          "questionID": "609379f1-faed-496c-b1c0-69093bb000f1"
+        },
+        {
+          "optionID": "4da91273-233d-45a1-b9f5-360df74998b2",
+          "option": "chair",
+          "answer": false,
+          "questionID": "609379f1-faed-496c-b1c0-69093bb000f1"
+        },
+        {
+          "optionID": "3aa8a69e-fc78-458a-aee1-78ec3408ad4e",
+          "option": "astronomy",
+          "answer": true,
+          "questionID": "609379f1-faed-496c-b1c0-69093bb000f1"
+        },
+        {
+          "optionID": "a4da461d-69e6-4c77-9169-c78b508a135e",
+          "option": "desk",
+          "answer": false,
+          "questionID": "609379f1-faed-496c-b1c0-69093bb000f1"
+        }
+      ],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "e5552394-b43e-4e4d-92d2-f1a018642a76",
+      "text": "Multiple answer (more than one possible): What are common household chores?",
+      "type": "MTEST",
+      "blanks": [],
+      "options": [
+        {
+          "optionID": "788b69ae-7a6f-4ef6-a408-c616b5260660",
+          "option": "sweeping",
+          "answer": true,
+          "questionID": "e5552394-b43e-4e4d-92d2-f1a018642a76"
+        },
+        {
+          "optionID": "91aa6877-4258-44d6-b656-0ec33d2b5caa",
+          "option": "laundry",
+          "answer": true,
+          "questionID": "e5552394-b43e-4e4d-92d2-f1a018642a76"
+        },
+        {
+          "optionID": "8bdefbae-2390-4838-8fc3-6efb5f8dbbd9",
+          "option": "skydiving",
+          "answer": false,
+          "questionID": "e5552394-b43e-4e4d-92d2-f1a018642a76"
+        },
+        {
+          "optionID": "1def3cea-ee2f-4ab8-a530-c57d1b752def",
+          "option": "basket weaving",
+          "answer": false,
+          "questionID": "e5552394-b43e-4e4d-92d2-f1a018642a76"
+        }
+      ],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "cdfd1e9a-0195-4fcb-a3b4-fd6f5d2382ca",
+      "text": "Multiple choice: What is the answer, bro?",
+      "type": "TEST",
+      "blanks": [],
+      "options": [
+        {
+          "optionID": "f11452c4-fb99-49c0-a89e-bdb5c2fd4793",
+          "option": "The answer",
+          "answer": true,
+          "questionID": "cdfd1e9a-0195-4fcb-a3b4-fd6f5d2382ca"
+        },
+        {
+          "optionID": "27651a8b-6218-4dbe-a7c4-0b4f0d25e06b",
+          "option": "Not the answer",
+          "answer": false,
+          "questionID": "cdfd1e9a-0195-4fcb-a3b4-fd6f5d2382ca"
+        },
+        {
+          "optionID": "fe6c44e8-83df-4b7a-af3d-7a3cc6cf6527",
+          "option": "Also not the answer",
+          "answer": false,
+          "questionID": "cdfd1e9a-0195-4fcb-a3b4-fd6f5d2382ca"
+        }
+      ],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "97b7b1d0-0461-48ed-bc1c-9982d838bcb6",
+      "text": "Fill in the blank: The quick red ___ jumped over the lazy brown ___. Hint: fox dog",
+      "type": "BLANK",
+      "blanks": [
+        {
+          "blankID": "861d3b30-b61e-4fd9-a1d3-e23a01ca216b",
+          "answer": "fox",
+          "questionID": "97b7b1d0-0461-48ed-bc1c-9982d838bcb6"
+        },
+        {
+          "blankID": "a597039c-c970-4da2-a842-dda0a2346a99",
+          "answer": "dog",
+          "questionID": "97b7b1d0-0461-48ed-bc1c-9982d838bcb6"
+        }
+      ],
+      "options": [],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "58d28e5f-d593-4677-b445-51e90a22063c",
+      "text": "Fill in the blank: This is a fill in the _____ question.",
+      "type": "BLANK",
+      "blanks": [
+        {
+          "blankID": "ece94934-76d6-44bf-9cc4-f976147cc1b3",
+          "answer": "blank",
+          "questionID": "58d28e5f-d593-4677-b445-51e90a22063c"
+        }
+      ],
+      "options": [],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    },
+    {
+      "questionID": "118f56d5-30e9-4b1d-8968-eaf52a686bc3",
+      "text": "Fill in the blank: This assignment is for a _________ course.",
+      "type": "BLANK",
+      "blanks": [
+        {
+          "blankID": "c8bbae5b-7307-4f7f-8558-1ad46f85573b",
+          "answer": "programming",
+          "questionID": "118f56d5-30e9-4b1d-8968-eaf52a686bc3"
+        }
+      ],
+      "options": [],
+      "essayList": [],
+      "quizID": "d268749c-b6c4-4df0-a54c-983a0937b7a4"
+    }
+  ]
+}
