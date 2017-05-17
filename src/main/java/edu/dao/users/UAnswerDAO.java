@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * UAnswerDAO represents major functions to work with UAnswer object and database.
  * Created by Mike on 02.05.2017.
  */
 public class UAnswerDAO {
@@ -22,6 +23,11 @@ public class UAnswerDAO {
     private ResultSet resultSet;
     private String sql;
 
+    /**
+     *  Create new user answer and put it to database.
+     * @param uAnswer
+     * @throws SQLException
+     */
     public void createUAnswer(UAnswer uAnswer) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -32,7 +38,7 @@ public class UAnswerDAO {
         pStatement.setObject(1, uAnswer.getUserID());
         pStatement.setObject(2, uAnswer.getQuestionID());
         pStatement.setString(3, uAnswer.getAnswer());
-        pStatement.setString(4, uAnswer.getMark());
+        pStatement.setDouble(4, uAnswer.getMark());
         pStatement.setObject(5, uAnswer.getAnswerID());
         pStatement.executeUpdate();
 
@@ -41,6 +47,11 @@ public class UAnswerDAO {
         connector.disconnect();
     }
 
+    /**
+     * Update existing user answer and put it to database.
+     * @param uAnswer is an input UAnswer object.
+     * @throws SQLException
+     */
     public void updateUAnswer(UAnswer uAnswer) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -50,7 +61,7 @@ public class UAnswerDAO {
         pStatement.setObject(1, uAnswer.getUserID());
         pStatement.setObject(2, uAnswer.getQuestionID());
         pStatement.setString(3, uAnswer.getAnswer());
-        pStatement.setString(4, uAnswer.getMark());
+        pStatement.setDouble(4, uAnswer.getMark());
         pStatement.executeUpdate();
 
         pStatement.close();
@@ -58,6 +69,11 @@ public class UAnswerDAO {
         connector.disconnect();
     }
 
+    /**
+     * Delete existing user answer from database.
+     * @param id is an user answer id.
+     * @throws SQLException
+     */
     public void deleteUAnswer(UUID id) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -72,11 +88,17 @@ public class UAnswerDAO {
         connector.disconnect();
     }
 
+    /**
+     * Get user answer by id.
+     * @param id is an user answer id.
+     * @return UAnswer object.
+     * @throws SQLException
+     */
     public UAnswer getUAnswerById(UUID id) throws SQLException {
 
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
-        sql = "SELECT * FROM users_answers WHERE user_id = ?";
+        sql = "SELECT * FROM users_answers WHERE answer_id = ?";
 
         pStatement = connection.prepareStatement(sql);
         pStatement.setObject(1, id);
@@ -88,7 +110,7 @@ public class UAnswerDAO {
             uAnswer.setUserID(UUID.fromString(resultSet.getString("user_id")));
             uAnswer.setQuestionID(UUID.fromString(resultSet.getString("question_id")));
             uAnswer.setAnswer(resultSet.getString("answer"));
-            uAnswer.setMark(resultSet.getString("mark"));
+            uAnswer.setMark(Double.valueOf(resultSet.getString("mark")));
         }
 
         resultSet.close();
@@ -99,6 +121,11 @@ public class UAnswerDAO {
         return uAnswer;
     }
 
+    /**
+     * Get all user answers.
+     * @return user answer list.
+     * @throws SQLException
+     */
     public List<UAnswer> getAllUAnswers() throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -114,7 +141,7 @@ public class UAnswerDAO {
             uAnswer.setUserID(UUID.fromString(resultSet.getString("user_id")));
             uAnswer.setQuestionID(UUID.fromString(resultSet.getString("question_id")));
             uAnswer.setAnswer(resultSet.getString("answer"));
-            uAnswer.setMark(resultSet.getString("mark"));
+            uAnswer.setMark(Double.valueOf(resultSet.getString("mark")));
             answers.add(uAnswer);
         }
 

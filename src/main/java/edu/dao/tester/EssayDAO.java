@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * EssayDAO represents major functions to work with Essay object and database.
  * Created by Mike on 03.05.2017.
  */
 public class EssayDAO {
@@ -22,6 +23,11 @@ public class EssayDAO {
     private ResultSet resultSet;
     private String sql;
 
+    /**
+     * Create new essay and put it to database.
+     * @param essay is an input Essay object.
+     * @throws SQLException
+     */
     public void createEssay(Essay essay) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -38,6 +44,11 @@ public class EssayDAO {
         connector.disconnect();
     }
 
+    /**
+     * Update existing essay and put it to database.
+     * @param essay is an input Essay object.
+     * @throws SQLException
+     */
     public void updateEssay(Essay essay) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -53,6 +64,11 @@ public class EssayDAO {
         connector.disconnect();
     }
 
+    /**
+     * Delete existing essay from database.
+     * @param id is a essay id.
+     * @throws SQLException
+     */
     public void deleteEssay(UUID id) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -67,7 +83,13 @@ public class EssayDAO {
         connector.disconnect();
     }
 
-    public Essay getUserById(UUID id) throws SQLException {
+    /**
+     * Get essay by id.
+     * @param id is an essay id.
+     * @return Essay object.
+     * @throws SQLException
+     */
+    public Essay getEssayById(UUID id) throws SQLException {
 
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -81,7 +103,7 @@ public class EssayDAO {
         while (resultSet.next()){
             essay.setEssayID(UUID.fromString(resultSet.getString("essay_id")));
             essay.setEssay(resultSet.getString("essay"));
-            essay.setQuestionID(UUID.fromString(resultSet.getString("password")));
+            essay.setQuestionID(UUID.fromString(resultSet.getString("question_id")));
         }
 
         resultSet.close();
@@ -92,6 +114,11 @@ public class EssayDAO {
         return essay;
     }
 
+    /**
+     * Get all essays.
+     * @return essay list.
+     * @throws SQLException
+     */
     public List<Essay> getAllEssays() throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();

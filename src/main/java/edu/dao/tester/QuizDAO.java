@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * QuizDAO represents major functions to work with Quiz object and database.
  * Created by Mike on 02.05.2017.
  */
 public class QuizDAO {
@@ -22,6 +23,11 @@ public class QuizDAO {
     private ResultSet resultSet;
     private String sql;
 
+    /**
+     *  Create new quiz and put it to database.
+     * @param quiz is an input Quiz object.
+     * @throws SQLException
+     */
     public void createQuiz(Quiz quiz) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -37,13 +43,19 @@ public class QuizDAO {
         connector.disconnect();
     }
 
-    public void updateUser(Quiz quiz) throws SQLException {
+    /**
+     *  Update existing quiz and put it to database.
+     * @param quiz is an input Quiz object.
+     * @throws SQLException
+     */
+    public void updateQuiz(Quiz quiz) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
-        sql = "UPDATE quiz SET theme = ?";
+        sql = "UPDATE quiz SET theme = ? WHERE quiz_id = ?";
 
         pStatement = connection.prepareStatement(sql);
         pStatement.setString(1, quiz.getTheme());
+        pStatement.setObject(2, quiz.getQuizID());
         pStatement.executeUpdate();
 
         pStatement.close();
@@ -51,7 +63,12 @@ public class QuizDAO {
         connector.disconnect();
     }
 
-    public void deleteUser(UUID id) throws SQLException {
+    /**
+     * Delete existing quiz from database.
+     * @param id is an quiz id.
+     * @throws SQLException
+     */
+    public void deleteQuiz(UUID id) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
         sql = "DELETE FROM quiz WHERE quiz_id = ?";
@@ -65,7 +82,13 @@ public class QuizDAO {
         connector.disconnect();
     }
 
-    public Quiz getUserById(UUID id) throws SQLException {
+    /**
+     * Get quiz by id.
+     * @param id is a quiz id.
+     * @return Quiz object
+     * @throws SQLException
+     */
+    public Quiz getQuizById(UUID id) throws SQLException {
 
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -89,6 +112,11 @@ public class QuizDAO {
         return quiz;
     }
 
+    /**
+     * Get all quizzes.
+     * @return quiz list.
+     * @throws SQLException
+     */
     public List<Quiz> getAllQuizzes() throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();

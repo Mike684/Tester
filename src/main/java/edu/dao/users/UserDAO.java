@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * UserDAO represents major functions to work with User object and database.
  * Created by Mike on 02.05.2017.
  */
 
@@ -23,6 +24,11 @@ public class UserDAO {
     private ResultSet resultSet;
     private String sql;
 
+    /**
+     * Create new user and put it to database.
+     * @param user is an input User object.
+     * @throws SQLException
+     */
     public void createUser(User user) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -39,14 +45,20 @@ public class UserDAO {
         connector.disconnect();
     }
 
+    /**
+     * Update existing user and put it to database.
+     * @param user is an input User object.
+     * @throws SQLException
+     */
     public void updateUser(User user) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
-        sql = "UPDATE users SET user_name = ?, password = ?";
+        sql = "UPDATE users SET user_name = ?, password = ? WHERE user_id = ?";
 
         pStatement = connection.prepareStatement(sql);
         pStatement.setString(1, user.getUserName());
         pStatement.setString(2, user.getPassword());
+        pStatement.setObject(3, user.getUserID());
         pStatement.executeUpdate();
 
         pStatement.close();
@@ -54,6 +66,11 @@ public class UserDAO {
         connector.disconnect();
     }
 
+    /**
+     * Delete existing user from database.
+     * @param id is an user id.
+     * @throws SQLException
+     */
     public void deleteUser(UUID id) throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
@@ -68,6 +85,12 @@ public class UserDAO {
         connector.disconnect();
     }
 
+    /**
+     * Get user by id.
+     * @param id is an user id.
+     * @return User object.
+     * @throws SQLException
+     */
     public User getUserById(UUID id) throws SQLException {
 
         DBConnector connector = new DBConnector();
@@ -93,6 +116,11 @@ public class UserDAO {
         return user;
     }
 
+    /**
+     * Get all users.
+     * @return user list.
+     * @throws SQLException
+     */
     public List<User> getAllUsers() throws SQLException {
         DBConnector connector = new DBConnector();
         connection = connector.getConnection();
