@@ -54,3 +54,5 @@ proguard/
 .gradletasknamecache
 .gradle/
 build/
+down
+gradle
